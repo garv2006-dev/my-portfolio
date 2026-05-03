@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-white">
         <h1 className="text-xl font-bold">Garv</h1>
         <div className="space-x-6 hidden md:flex">
-          <a href="#about">VVVVVVVVV</a>
+          <a href="#about">Abouts</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
         </div>
