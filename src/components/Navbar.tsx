@@ -13,6 +13,7 @@ const Navbar = () => {
           <a href="#about">Abouts</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
+          <a href="tel:7069909314">7069909314</a>
         </div>
       </div>
     </motion.nav>
