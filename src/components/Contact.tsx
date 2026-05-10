@@ -27,10 +27,9 @@ export default function Contact() {
   };
 
   const socials = [
-    { icon: GithubIcon, label: 'GitHub', href: '#' },
-    { icon: LinkedinIcon, label: 'LinkedIn', href: '#' },
-    { icon: TwitterIcon, label: 'Twitter', href: '#' },
-    { icon: InstagramIcon, label: 'Instagram', href: '#' },
+    { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/garv2006-dev' },
+    { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/garv-variya-5912aa363/' },
+    { icon: InstagramIcon, label: 'Instagram', href: 'https://instagram.com/garv_variya_77' },
   ];
 
   return (
@@ -67,7 +66,7 @@ export default function Contact() {
             </div>
             <div className="flex gap-3">
               {socials.map((s, i) => (
-                <motion.a key={i} href={s.href} whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.9 }} className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 hover:text-[#64ffda] hover:bg-[#64ffda]/10 transition-all duration-300 cursor-pointer" aria-label={s.label}>
+                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.9 }} className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 hover:text-[#64ffda] hover:bg-[#64ffda]/10 transition-all duration-300 cursor-pointer" aria-label={s.label}>
                   <s.icon size={20} />
                 </motion.a>
               ))}

@@ -6,7 +6,7 @@ export default function About() {
   const { ref, isInView } = useInView(0.2);
   const c1 = useCountUp(10, 2000, 0, isInView);
   const c2 = useCountUp(5, 2000, 0, isInView);
-  const c3 = useCountUp(2024, 2000, 0, isInView);
+  const c3 = useCountUp(2026, 2000, 0, isInView);
   const c4 = useCountUp(100, 2000, 0, isInView);
 
   const stats = [

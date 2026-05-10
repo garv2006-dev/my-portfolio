@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 
 const timeline = [
-  { year: '2021', title: 'Discovered Web Development', desc: 'Started learning HTML, CSS, JavaScript through online resources. Built first static websites.', color: 'from-blue-400 to-blue-600' },
-  { year: '2021-2024', title: 'BCA at Vivekananda College, Surat', desc: 'Bachelor of Computer Applications. Studied data structures, algorithms, DBMS, networking, and software engineering.', color: 'from-purple-400 to-purple-600' },
-  { year: '2022', title: 'Dived into React & Node.js', desc: 'Started building full-stack projects. Learned React ecosystem, REST APIs, and backend development with Node.js and Express.', color: 'from-green-400 to-green-600' },
-  { year: '2023', title: 'Expanded to Databases & Cloud', desc: 'Mastered MongoDB, PostgreSQL, and Firebase. Deployed first production app on Vercel.', color: 'from-orange-400 to-orange-600' },
-  { year: '2024', title: 'TypeScript & Advanced Concepts', desc: 'Adopted TypeScript in all new projects. Started exploring system design and scalable architecture.', color: 'from-cyan-400 to-cyan-600' },
-  { year: 'Present', title: 'Actively Seeking Opportunities', desc: 'Building open-source projects, expanding portfolio, looking for exciting full-stack roles.', color: 'from-pink-400 to-pink-600' },
+  { year: '2023', title: 'Discovered Web Development', desc: 'Started learning HTML, CSS, JavaScript through online resources. Built first static websites.', color: 'from-blue-400 to-blue-600' },
+  { year: '2023-2026', title: 'BCA at Vivekananda College, Surat', desc: 'Bachelor of Computer Applications. Studied data structures, algorithms, DBMS, networking, and software engineering.', color: 'from-purple-400 to-purple-600' },
+  { year: '2024', title: 'Dived into React & Node.js', desc: 'Started building full-stack projects. Learned React ecosystem, REST APIs, and backend development with Node.js and Express.', color: 'from-green-400 to-green-600' },
+  { year: '2025', title: 'Expanded to Databases & Cloud', desc: 'Mastered MongoDB, PostgreSQL, and Firebase. Deployed first production app on Vercel.', color: 'from-orange-400 to-orange-600' },
+  { year: '2026', title: 'TypeScript & Advanced Concepts', desc: 'Adopted TypeScript in all new projects. Started exploring system design and scalable architecture.', color: 'from-cyan-400 to-cyan-600' },
+  { year: 'Present', title: 'Actively Seeking Opportunities', desc: 'Motivated and detail-oriented Full Stack Developer fresher with hands-on experience in modern web technologies, passionate about creating responsive, user-friendly applications and continuously learning new technologies.', color: 'from-pink-400 to-pink-600' },
 ];
 
 export default function Journey() {

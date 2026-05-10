@@ -1,54 +1,84 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Layout, Code2, Database, Wrench } from 'lucide-react';
-import { useInView } from '../hooks';
+import { Code2 } from 'lucide-react';
+import type { IconType } from 'react-icons';
+import { VscVscode } from 'react-icons/vsc';
+import {
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiGraphql,
+  SiPostgresql,
+  SiMongodb,
+  SiFirebase,
+  SiGithub,
+  SiPostman,
+  SiVercel,
+  SiNetlify,
+  SiRender,
+} from 'react-icons/si';
 
 const skillCategories = {
-  Frontend: { icon: Layout, color: 'from-blue-400 to-blue-600', skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'React.js', 'Tailwind CSS'] },
-  Backend: { icon: Code2, color: 'from-green-400 to-green-600', skills: ['Node.js', 'Express.js', 'REST API', 'GraphQL (basic)'] },
-  Databases: { icon: Database, color: 'from-purple-400 to-purple-600', skills: ['PostgreSQL', 'MongoDB', 'Firebase (Realtime DB + Firestore)'] },
-  Tools: { icon: Wrench, color: 'from-orange-400 to-orange-600', skills: ['Git & GitHub', 'VS Code', 'Postman', 'Vercel', 'Netlify', 'Figma (basic)'] },
+  Frontend: {
+    color: 'from-blue-400 to-blue-600',
+    skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript', 'React.js', 'Tailwind CSS'],
+  },
+  Backend: {
+    color: 'from-green-400 to-green-600',
+    skills: ['Node.js', 'Express.js', 'REST API', 'GraphQL (basic)'],
+  },
+  Databases: {
+    color: 'from-purple-400 to-purple-600',
+    skills: ['PostgreSQL', 'MongoDB', 'Firebase (Realtime DB + Firestore)'],
+  },
+  Tools: {
+    color: 'from-orange-400 to-orange-600',
+    skills: ['Git & GitHub', 'VS Code', 'Postman', 'Vercel', 'Netlify', 'Render'],
+  },
 };
 
-const topSkills = [
-  { name: 'HTML', pct: 90, color: '#E34F26' },
-  { name: 'CSS', pct: 85, color: '#1572B6' },
-  { name: 'JavaScript', pct: 88, color: '#F7DF1E' },
-  { name: 'React', pct: 85, color: '#61DAFB' },
-  { name: 'Node.js', pct: 80, color: '#339933' },
-  { name: 'MongoDB', pct: 75, color: '#47A248' },
-];
-
-function SkillBar({ name, pct, color, delay, inView }: { name: string; pct: number; color: string; delay: number; inView: boolean }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay }} className="mb-4">
-      <div className="flex justify-between mb-1.5">
-        <span className="text-sm font-medium text-gray-700">{name}</span>
-        <span className="text-sm font-medium text-gray-500">{pct}%</span>
-      </div>
-      <div className="h-2.5 bg-gray-200 rounded-full overflow-hidden">
-        <motion.div className="h-full rounded-full" style={{ backgroundColor: color, width: inView ? `${pct}%` : '0%' }} transition={{ duration: 1.5, delay: delay + 0.3, ease: [0.25, 0.46, 0.45, 0.94] }} />
-      </div>
-    </motion.div>
-  );
-}
+const skillIconMap: Record<string, { icon: IconType; color: string }> = {
+  'HTML5': { icon: SiHtml5, color: '#E34F26' },
+  'CSS3': { icon: SiCss, color: '#1572B6' },
+  'JavaScript (ES6+)': { icon: SiJavascript, color: '#F7DF1E' },
+  'TypeScript': { icon: SiTypescript, color: '#3178C6' },
+  'React.js': { icon: SiReact, color: '#61DAFB' },
+  'Tailwind CSS': { icon: SiTailwindcss, color: '#38B2AC' },
+  'Node.js': { icon: SiNodedotjs, color: '#339933' },
+  'Express.js': { icon: SiExpress, color: '#000000' },
+  'REST API': { icon: Code2, color: '#7C3AED' },
+  'GraphQL (basic)': { icon: SiGraphql, color: '#E535AB' },
+  'PostgreSQL': { icon: SiPostgresql, color: '#336791' },
+  'MongoDB': { icon: SiMongodb, color: '#47A248' },
+  'Firebase (Realtime DB + Firestore)': { icon: SiFirebase, color: '#FFCA28' },
+  'Git & GitHub': { icon: SiGithub, color: '#181717' },
+  'VS Code': { icon: VscVscode, color: '#007ACC' },
+  'Postman': { icon: SiPostman, color: '#FF6C37' },
+  'Vercel': { icon: SiVercel, color: '#000000' },
+  'Netlify': { icon: SiNetlify, color: '#00C7B7' },
+  'Render': { icon: SiRender, color: '#000000' },
+};
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('Frontend');
-  const { ref, isInView } = useInView(0.1);
   const cat = skillCategories[activeTab as keyof typeof skillCategories];
 
   return (
     <section id="skills" className="relative py-24 lg:py-32 bg-white overflow-hidden section-snap">
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="text-blue-500 font-medium text-sm tracking-widest uppercase">What I know</span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-[#111827] mt-3">My Tech Stack</h2>
           <p className="text-gray-500 mt-3 max-w-lg mx-auto">Technologies I work with professionally</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid gap-16">
           <div>
             <div className="flex flex-wrap gap-2 mb-8">
               {Object.keys(skillCategories).map(tab => (
@@ -58,21 +88,21 @@ export default function Skills() {
 
             <AnimatePresence mode="wait">
               <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {cat.skills.map((skill, i) => (
-                  <motion.div key={skill} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="glass-light rounded-xl p-4 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-default">
-                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cat.color} mx-auto mb-2 flex items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity`}>
-                      <cat.icon size={18} className="text-white" />
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">{skill}</span>
-                  </motion.div>
-                ))}
+                {cat.skills.map((skill, i) => {
+                  const entry = skillIconMap[skill];
+                  const Icon = entry?.icon ?? Code2;
+                  const iconColor = entry?.color ?? '#4B5563';
+                  return (
+                    <motion.div key={skill} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="glass-light rounded-xl p-4 text-center group cursor-default">
+                      <div className="w-12 h-12 rounded-2xl bg-white mx-auto mb-2 flex items-center justify-center p-2 shadow-sm">
+                        <Icon color={iconColor} size={26} />
+                      </div>
+                      <span className="text-sm font-medium text-gray-700">{skill}</span>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </AnimatePresence>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-[#111827] mb-6 font-[Space_Grotesk]">Proficiency</h3>
-            {topSkills.map((s, i) => (<SkillBar key={s.name} {...s} delay={i * 0.1} inView={isInView} />))}
           </div>
         </div>
       </div>
