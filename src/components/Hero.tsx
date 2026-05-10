@@ -54,16 +54,16 @@ export default function Hero() {
   const typedText = useTypewriter(['Full-Stack Developer', 'React & Node.js Specialist', 'UI Enthusiast', 'Problem Solver'], 80, 40, 2000);
 
   return (
-    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh section-snap">
+    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh section-snap pt-24 pb-12">
       {floatingSymbols.map((sym, i) => (
         <motion.div key={i} className={`absolute ${sym.size} font-mono text-blue-300/20 select-none pointer-events-none`} style={{ left: sym.x, top: sym.y }} animate={{ opacity: [0.1, 0.25, 0.1], y: [0, -20, 0], rotate: [0, 10, -5, 0] }} transition={{ duration: 6, delay: sym.delay, repeat: Infinity, ease: 'easeInOut' }}>{sym.text}</motion.div>
       ))}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-300/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
 
-      <motion.div style={{ opacity, scale, y }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left">
+      <motion.div style={{ opacity, scale, y }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div className="text-center lg:text-left lg:max-w-xl mx-auto lg:mx-0">
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-gray-500 text-lg font-medium mb-3">Hi, I'm</motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="text-5xl sm:text-6xl lg:text-7xl font-bold font-[Space_Grotesk] text-gradient-blue leading-tight mb-4">Garv Variya</motion.h1>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="text-xl sm:text-2xl font-medium text-gray-600 mb-4 h-9">
@@ -92,7 +92,7 @@ export default function Hero() {
               </div>
               <div className="p-5 font-mono text-sm leading-7 overflow-hidden">
                 {codeLines.map((line, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 1 + i * 0.08 }} className="flex">
+                  <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 1 + i * 0.08 }} className="code-line flex">
                     <span className="text-gray-600 w-6 text-right mr-4 select-none text-xs leading-7">{i + 1}</span>
                     <span className="text-gray-300">{line}</span>
                   </motion.div>
