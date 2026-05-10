@@ -12,7 +12,7 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const resumeUrl = '/Garv_Variya_Resume.pdf';
+const resumeUrl = '../../public/images/My Resume.pdf';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
