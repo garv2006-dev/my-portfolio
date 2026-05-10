@@ -12,6 +12,8 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
+const resumeUrl = '/Garv_Variya_Resume.pdf';
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -95,7 +97,8 @@ export default function Navbar() {
                 </button>
               ))}
               <motion.a
-                href="#"
+                href={resumeUrl}
+                download="Garv_Variya_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="ml-4 px-5 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white flex items-center gap-2 hover:shadow-lg hover:shadow-blue-500/25 transition-shadow cursor-pointer"
@@ -141,7 +144,8 @@ export default function Navbar() {
                   </button>
                 ))}
                 <a
-                  href="#"
+                  href={resumeUrl}
+                  download="Garv_Variya_Resume.pdf"
                   className="block w-full text-center mt-3 px-5 py-3 text-sm font-medium rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white cursor-pointer"
                 >
                   Download Resume
