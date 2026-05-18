@@ -44,13 +44,16 @@ export function useActiveSection(sectionIds: string[]) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length === 0) return;
+
+        const mostVisibleEntry = visibleEntries.reduce((current, next) =>
+          current.intersectionRatio >= next.intersectionRatio ? current : next
+        );
+
+        setActiveSection(mostVisibleEntry.target.id);
       },
-      { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' }
+      { threshold: [0.25, 0.5, 0.75, 1], rootMargin: '-40% 0px -55% 0px' }
     );
 
     sectionIds.forEach((id) => {

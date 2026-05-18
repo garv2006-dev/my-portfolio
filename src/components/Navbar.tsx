@@ -12,7 +12,7 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const resumeUrl = '../../public/images/My Resume.pdf';
+const resumeUrl = '../../public/images/Garv_Variya_Resume.pdf';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,7 +65,7 @@ export default function Navbar() {
                 GV
               </div>
               <span className={`font-[Space_Grotesk] font-semibold text-lg hidden sm:block transition-colors ${isScrolled ? 'text-white' : 'text-charcoal'}`}>
-                Garv<span className="text-blue-500">.</span>
+                Garv
               </span>
             </motion.button>
 
