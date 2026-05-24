@@ -1,19 +1,23 @@
-import Navbar from "./components/Navbar";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Projects from "./sections/Projects";
-import Contact from "./sections/Contact";
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Journey from './components/Journey';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
-function App() {
+export default function App() {
   return (
-    <div className="bg-black">
+    <div className="relative">
       <Navbar />
       <Hero />
       <About />
+      <Skills />
       <Projects />
+      <Journey />
       <Contact />
+      <Footer />
     </div>
   );
 }
-
-export default App;
