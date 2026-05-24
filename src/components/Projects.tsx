@@ -13,7 +13,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         <motion.div initial={{ opacity: 0, x: isEven ? -60 : 60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className={isEven ? 'lg:order-1' : 'lg:order-2'}>
           <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ duration: 0.3 }} className="relative group">
             <div
-              className={`aspect-[4/3] rounded-2xl p-1 shadow-2xl overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`}
+              className={`aspect-[4/3] rounded-xl p-1 shadow-2xl overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient}`}`}
               style={project.image ? { backgroundImage: `url(${project.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
             >
               <div className={`w-full h-full rounded-xl flex items-center justify-center relative overflow-hidden ${project.image ? 'bg-black/35' : 'bg-gray-900/90'}`}>
@@ -39,14 +39,18 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         <motion.div initial={{ opacity: 0, x: isEven ? 60 : -60 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className={isEven ? 'lg:order-2' : 'lg:order-1'}>
           <div>
             <span className="text-blue-500 font-medium text-sm">Featured Project</span>
-            <h3 className="text-3xl sm:text-4xl font-bold font-[Space_Grotesk] text-[#111827] mt-2 mb-4">{project.title}</h3>
-            <p className="text-gray-600 leading-relaxed mb-6">{project.desc}</p>
+            <h3 className="text-3xl sm:text-4xl font-bold font-[Space_Grotesk] text-text-primary mt-2 mb-4">{project.title}</h3>
+            <p className="text-text-secondary leading-relaxed mb-6">{project.desc}</p>
             <div className="flex flex-wrap gap-2 mb-6">
-              {project.tech.map(t => (<span key={t} className="px-3 py-1.5 bg-blue-50 text-blue-600 text-xs font-medium rounded-lg">{t}</span>))}
+              {project.tech.map(t => (
+                <span key={t} className="px-3 py-1.5 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300 text-xs font-medium rounded-lg border border-blue-100/50 dark:border-blue-900/30">
+                  {t}
+                </span>
+              ))}
             </div>
             <ul className="space-y-2 mb-8">
               {project.features.map(f => (
-                <li key={f} className="flex items-center gap-2 text-gray-600 text-sm"><Check size={14} className="text-blue-500 flex-shrink-0" />{f}</li>
+                <li key={f} className="flex items-center gap-2 text-text-secondary text-sm"><Check size={14} className="text-blue-500 flex-shrink-0" />{f}</li>
               ))}
             </ul>
             <div className="flex gap-4">
@@ -61,20 +65,20 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative bg-white">
-      <div className="py-24 lg:py-32 bg-[#F8FAFC]">
+    <section id="projects" className="relative bg-bg-primary transition-colors duration-300">
+      <div className="py-24 lg:py-32 bg-bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
             <span className="text-blue-500 font-medium text-sm tracking-widest uppercase">My work</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-[#111827] mt-3">Featured Projects</h2>
-            <p className="text-gray-500 mt-3 max-w-lg mx-auto">A selection of projects that showcase my skills and passion</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-text-primary mt-3">Featured Projects</h2>
+            <p className="text-text-secondary mt-3 max-w-lg mx-auto">A selection of projects that showcase my skills and passion</p>
           </motion.div>
         </div>
       </div>
       {projects.map((p, i) => (<ProjectCard key={p.title} project={p} index={i} />))}
-      <div className="py-16 text-center bg-[#F8FAFC]">
+      <div className="py-16 text-center bg-bg-secondary">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <motion.a href="https://github.com/garv2006-dev" target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }} className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/25 cursor-pointer">More on GitHub <ArrowRight size={16} /></motion.a>
+          <motion.a href="https://github.com/garv2006-dev" target="_blank" rel="noreferrer" whileHover={{ scale: 1.05 }} className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/25 cursor-pointer">More on GitHub <ArrowRight size={16} /></motion.a>
         </motion.div>
       </div>
     </section>

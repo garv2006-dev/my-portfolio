@@ -30,36 +30,36 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-[#0a192f] overflow-hidden section-snap">
-      <div className="absolute inset-0">
+    <section id="contact" className="relative py-24 lg:py-32 bg-bg-primary overflow-hidden section-snap transition-colors duration-300">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="text-[#64ffda] font-medium text-sm tracking-widest uppercase">Get in touch</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-white mt-3">Contact Me</h2>
+          <span className="text-blue-500 font-semibold text-sm tracking-widest uppercase">Get in touch</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-text-primary mt-3">Contact Me</h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="glass rounded-2xl p-8 h-full">
-            <h3 className="text-2xl font-bold text-white font-[Space_Grotesk] mb-6">Let's Build Something Together</h3>
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="bg-card-bg border border-card-border shadow-md shadow-card-shadow rounded-xl p-5 sm:p-6 h-full hover:shadow-lg transition-all duration-300">
+            <h3 className="text-2xl font-bold text-text-primary font-[Space_Grotesk] mb-6">Let's Build Something Together</h3>
             <div className="space-y-5 mb-8">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center"><Mail size={20} className="text-blue-400" /></div>
-                <div><p className="text-gray-400 text-xs">Email</p><p className="text-white font-medium">garv.variya@gmail.com</p></div>
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center"><Mail size={20} className="text-blue-500" /></div>
+                <div><p className="text-text-secondary text-xs">Email</p><p className="text-text-primary font-semibold">garv.variya@gmail.com</p></div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center"><MapPin size={20} className="text-blue-400" /></div>
-                <div><p className="text-gray-400 text-xs">Location</p><p className="text-white font-medium">Surat, Gujarat, India</p></div>
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center"><MapPin size={20} className="text-blue-500" /></div>
+                <div><p className="text-text-secondary text-xs">Location</p><p className="text-text-primary font-semibold">Surat, Gujarat, India</p></div>
               </div>
             </div>
-            <div className="p-4 rounded-xl bg-[#64ffda]/5 border border-[#64ffda]/10 mb-8">
-              <p className="text-[#64ffda] text-sm font-medium">Open to full-time & freelance opportunities</p>
+            <div className="p-4 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/30 mb-8">
+              <p className="text-blue-600 dark:text-blue-300 text-sm font-semibold">Open to full-time & freelance opportunities</p>
             </div>
             <div className="flex gap-3">
               {socials.map((s, i) => (
-                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.9 }} className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 hover:text-[#64ffda] hover:bg-[#64ffda]/10 transition-all duration-300 cursor-pointer" aria-label={s.label}>
+                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.9 }} className="w-12 h-12 rounded-xl bg-bg-secondary border border-card-border flex items-center justify-center text-text-secondary hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 cursor-pointer" aria-label={s.label}>
                   <s.icon size={20} />
                 </motion.a>
               ))}
@@ -67,25 +67,25 @@ export default function Contact() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="">
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="bg-card-bg border border-card-border shadow-md shadow-card-shadow rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all duration-300">
               <div className="space-y-5">
                 <div>
-                  <label className="text-gray-400 text-sm mb-2 block">Name</label>
-                  <input type="text" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Your name" />
+                  <label className="text-text-primary font-medium text-sm mb-2 block">Name</label>
+                  <input type="text" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-bg-secondary border border-card-border text-text-primary placeholder-text-secondary/40 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" placeholder="Your name" />
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm mb-2 block">Email</label>
-                  <input type="email" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="your@email.com" />
+                  <label className="text-text-primary font-medium text-sm mb-2 block">Email</label>
+                  <input type="email" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-bg-secondary border border-card-border text-text-primary placeholder-text-secondary/40 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" placeholder="your@email.com" />
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm mb-2 block">Subject</label>
-                  <input type="text" required value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="Project inquiry" />
+                  <label className="text-text-primary font-medium text-sm mb-2 block">Subject</label>
+                  <input type="text" required value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-bg-secondary border border-card-border text-text-primary placeholder-text-secondary/40 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" placeholder="Project inquiry" />
                 </div>
                 <div>
-                  <label className="text-gray-400 text-sm mb-2 block">Message</label>
-                  <textarea required rows={4} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none" placeholder="Tell me about your project..." />
+                  <label className="text-text-primary font-medium text-sm mb-2 block">Message</label>
+                  <textarea required rows={4} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-xl bg-bg-secondary border border-card-border text-text-primary placeholder-text-secondary/40 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none shadow-sm" placeholder="Tell me about your project..." />
                 </div>
-                <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full py-3.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25 relative overflow-hidden group cursor-pointer">
+                <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25 relative overflow-hidden group cursor-pointer">
                   <span className="relative z-10">{sent ? 'Message Sent!' : 'Send Message'}</span>
                   {!sent && <Send size={16} className="relative z-10" />}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />

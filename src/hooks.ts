@@ -53,7 +53,7 @@ export function useActiveSection(sectionIds: string[]) {
 
         setActiveSection(mostVisibleEntry.target.id);
       },
-      { threshold: [0.25, 0.5, 0.75, 1], rootMargin: '-40% 0px -55% 0px' }
+      { threshold: [0, 0.25, 0.5], rootMargin: '-48% 0px -48% 0px' }
     );
 
     sectionIds.forEach((id) => {

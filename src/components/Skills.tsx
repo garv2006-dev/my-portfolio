@@ -69,35 +69,51 @@ export default function Skills() {
   const cat = skillCategories[activeTab as keyof typeof skillCategories];
 
   return (
-    <section id="skills" className="relative py-24 lg:py-32 bg-white overflow-hidden section-snap">
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <section id="skills" className="relative py-24 lg:py-32 bg-bg-primary overflow-hidden section-snap transition-colors duration-300">
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="text-blue-500 font-medium text-sm tracking-widest uppercase">What I know</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-[#111827] mt-3">My Tech Stack</h2>
-          <p className="text-gray-500 mt-3 max-w-lg mx-auto">Technologies I work with professionally</p>
+          <span className="text-blue-500 font-semibold text-sm tracking-widest uppercase">What I know</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-text-primary mt-3">My Tech Stack</h2>
+          <p className="text-text-secondary mt-3 max-w-lg mx-auto">Technologies I work with professionally</p>
         </motion.div>
 
         <div className="grid gap-16">
           <div>
             <div className="flex flex-wrap gap-2 mb-8">
               {Object.keys(skillCategories).map(tab => (
-                <button key={tab} onClick={() => setActiveTab(tab)} className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${activeTab === tab ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{tab}</button>
+                <button key={tab} onClick={() => setActiveTab(tab)} className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${activeTab === tab ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-bg-secondary text-text-secondary border border-card-border/50 hover:bg-card-border'}`}>{tab}</button>
               ))}
             </div>
 
             <AnimatePresence mode="wait">
-              <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 sm:gap-8 justify-items-center"
+              >
                 {cat.skills.map((skill, i) => {
                   const entry = skillIconMap[skill];
                   const Icon = entry?.icon ?? Code2;
                   const iconColor = entry?.color ?? '#4B5563';
                   return (
-                    <motion.div key={skill} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }} className="glass-light rounded-xl p-4 text-center group cursor-default">
-                      <div className="w-12 h-12 rounded-2xl bg-white mx-auto mb-2 flex items-center justify-center p-2 shadow-sm">
-                        <Icon color={iconColor} size={26} />
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                      whileHover={{ y: -5 }}
+                      className="flex flex-col items-center justify-center text-center group cursor-default"
+                    >
+                      <div className="w-16 h-16 rounded-xl bg-card-bg border border-card-border shadow-sm shadow-card-shadow flex items-center justify-center p-3.5 group-hover:scale-110 group-hover:shadow-md transition-all duration-300 mb-3">
+                        <Icon color={iconColor} size={32} />
                       </div>
-                      <span className="text-sm font-medium text-gray-700">{skill}</span>
+                      <span className="text-sm font-semibold text-text-primary group-hover:text-blue-500 dark:group-hover:text-cyan-accent transition-colors duration-300">
+                        {skill}
+                      </span>
                     </motion.div>
                   );
                 })}
