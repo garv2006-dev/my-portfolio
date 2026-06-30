@@ -12,7 +12,7 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const resumeUrl = '../../public/images/Garv_Variya_Resume.pdf';
+const resumeUrl = '/images/Garv_Variya_Resume.pdf';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
