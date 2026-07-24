@@ -1,11 +1,25 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Check, ArrowRight } from 'lucide-react';
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  desc: string;
+  type?: string;
+  tech: string[];
+  features: string[];
+  badge: string;
+  gradient: string;
+  icon?: React.ReactNode | string;
+  image?: string;
+  liveLink?: string;
+}
+
+const projects: Project[] = [
   { title: 'Luxury Hotel Website', subtitle: 'Modern Hotel Booking UI', desc: 'A modern hotel booking web app with room listings, online reservations, secure payment integration, user authentication, and an admin dashboard.', type: 'Hotel Website', tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'JWT Auth'], features: ['Online booking system', 'Payment gateway integration', 'Responsive design', 'Room filtering'], badge: 'Hospitality', gradient: 'from-blue-500 to-cyan-400', image: 'https://images.unsplash.com/photo-1501117716987-c8e6d71b5d65?auto=format&fit=crop&w=1200&q=80', liveLink: 'https://www.luxuryhotelrooms.site/' },
-  { title: 'Pave', subtitle: 'Workspace Collaboration Platform', desc: 'A collaborative workspace management web app with calendar integration, meeting scheduling, task management, secure authentication, and workspace creation features.', type: 'Workspace App', tech: ['React JS', 'Nest JS', 'PostgreSQL', 'Tailwind CSS', 'Auth System'], features: ['Calendar & meeting scheduling', 'Task management system', 'Workspace creation & collaboration', 'Responsive design'], badge: 'Collaboration', gradient: 'from-sky-500 to-indigo-500', icon: '🧩', image: 'https://images.unsplash.com/photo-1581091012184-13f81ff8455a?auto=format&fit=crop&w=1200&q=80', liveLink: 'https://app.pave.sh/' },
+  // { title: 'Pave', subtitle: 'Workspace Collaboration Platform', desc: 'A collaborative workspace management web app with calendar integration, meeting scheduling, task management, secure authentication, and workspace creation features.', type: 'Workspace App', tech: ['React JS', 'Nest JS', 'PostgreSQL', 'Tailwind CSS', 'Auth System'], features: ['Calendar & meeting scheduling', 'Task management system', 'Workspace creation & collaboration', 'Responsive design'], badge: 'Collaboration', gradient: 'from-sky-500 to-indigo-500', icon: '🧩', image: 'https://images.unsplash.com/photo-1581091012184-13f81ff8455a?auto=format&fit=crop&w=1200&q=80', liveLink: 'https://app.pave.sh/' },
 ];
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isEven = index % 2 === 0;
   return (
     <div className="min-h-screen flex items-center py-16 section-snap">
@@ -19,7 +33,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
               <div className={`w-full h-full rounded-xl flex items-center justify-center relative overflow-hidden ${project.image ? 'bg-black/35' : 'bg-gray-900/90'}`}>
                 {project.image && <div className="absolute inset-0 bg-black/30" />}
                 <div className="relative text-center z-10 px-4 py-6">
-                  <div className="text-6xl mb-4">{project.icon}</div>
+                  {/* <div className="text-6xl mb-4">{project.icon}</div> */}
                   <div className="text-white font-bold text-2xl font-[Space_Grotesk]">{project.title}</div>
                   <div className="text-gray-200 text-sm mt-1">{project.subtitle}</div>
                   {project.type && <div className="mt-3 inline-flex px-3 py-1 rounded-full bg-white/10 text-white text-xs uppercase tracking-[0.18em] font-semibold">{project.type}</div>}

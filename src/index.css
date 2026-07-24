@@ -57,7 +57,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -187,7 +186,6 @@ body {
 }
 
 .section-snap {
-  scroll-snap-align: start;
   scroll-margin-top: 7rem;
 }
 
