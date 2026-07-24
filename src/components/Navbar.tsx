@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import { useScrollProgress, useActiveSection } from '../hooks';
 
 const navLinks = [
@@ -12,19 +12,17 @@ const navLinks = [
   { id: 'contact', label: 'Contact' },
 ];
 
-const resumeUrl = '/images/Garv_Variya_Resume.pdf';
-
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const progress = useScrollProgress();
   const activeSection = useActiveSection(navLinks.map((l) => l.id));
-  
+
   // Theme state initialization with localStorage & system preference fallback
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('theme');
       if (stored === 'light' || stored === 'dark') return stored;
-      
+
       const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       return systemPreference;
     }
@@ -102,11 +100,10 @@ export default function Navbar() {
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`group relative px-4.5 py-2 text-sm font-semibold rounded-full transition-colors duration-500 cursor-pointer ${
-                    isActive
-                      ? 'text-cyan-accent'
-                      : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`group relative px-4.5 py-2 text-sm font-semibold rounded-full transition-colors duration-500 cursor-pointer ${isActive
+                    ? 'text-cyan-accent'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
                 >
                   {/* Sliding Active Highlight Capsule */}
                   {isActive && (
@@ -142,28 +139,6 @@ export default function Navbar() {
               )}
             </motion.button>
 
-            {/* Glowing Action Button: Resume */}
-            <motion.a
-              href={resumeUrl}
-              download="Garv_Variya_Resume.pdf"
-              whileHover="hover"
-              initial="initial"
-              className="group relative ml-4 px-5 py-2 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-[length:200%_auto] hover:bg-right hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-500 ease-out cursor-pointer flex items-center gap-2 overflow-hidden"
-            >
-              {/* Outer glow aura on hover */}
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-500" />
-              
-              {/* Animated Download Icon */}
-              <motion.div
-                variants={{
-                  initial: { y: 0 },
-                  hover: { y: [0, -3, 3, 0], transition: { duration: 0.6, ease: 'easeInOut' } }
-                }}
-              >
-                <Download size={14} className="stroke-[2.5]" />
-              </motion.div>
-              <span>Resume</span>
-            </motion.a>
           </div>
 
           {/* Mobile Animated Hamburger Menu Button */}
@@ -242,17 +217,16 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? 'text-cyan-accent bg-white/10 border border-white/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
+                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer ${isActive
+                      ? 'text-cyan-accent bg-white/10 border border-white/10'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      }`}
                   >
                     {link.label}
                   </motion.button>
                 );
               })}
-              
+
               {/* Mobile Theme Toggle */}
               <motion.button
                 onClick={toggleTheme}
@@ -273,17 +247,6 @@ export default function Navbar() {
                   </>
                 )}
               </motion.button>
-
-              <motion.a
-                href={resumeUrl}
-                download="Garv_Variya_Resume.pdf"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.05 }}
-                className="block w-full text-center mt-3 px-5 py-3.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl cursor-pointer"
-              >
-                Download Resume
-              </motion.a>
             </div>
           </motion.div>
         )}
