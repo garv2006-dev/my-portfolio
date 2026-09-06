@@ -20,37 +20,37 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-bg-primary overflow-hidden section-snap transition-colors duration-300">
+    <section id="contact" className="relative py-12 sm:py-16 lg:py-20 bg-bg-primary overflow-hidden section-snap transition-colors duration-300">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/3 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="text-blue-500 font-semibold text-sm tracking-widest uppercase">Get in touch</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold font-[Space_Grotesk] text-text-primary mt-3">Contact Me</h2>
+        <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8 sm:mb-10">
+          <span className="text-blue-500 font-semibold text-xs sm:text-sm tracking-widest uppercase">Get in touch</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-[Space_Grotesk] text-text-primary mt-2">Contact Me</h2>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="bg-card-bg border border-card-border shadow-md shadow-card-shadow rounded-2xl p-8 sm:p-10 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-            <h3 className="text-2xl sm:text-3xl font-bold text-text-primary font-[Space_Grotesk] mb-8">Let's Build Something Together</h3>
-            <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 mb-10">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center"><Mail size={24} className="text-blue-500" /></div>
-                <div><p className="text-text-secondary text-sm mb-1">Email</p><p className="text-text-primary font-semibold">garvvariya03@gmail.com</p></div>
+        <div className="max-w-xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="bg-card-bg border border-card-border/80 shadow-sm rounded-xl p-5 sm:p-6 lg:p-8 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
+            <h3 className="text-xl sm:text-2xl font-bold text-text-primary font-[Space_Grotesk] mb-6">Let's Build Something Together</h3>
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mb-6">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center"><Mail size={20} className="text-blue-500" /></div>
+                <div><p className="text-text-secondary text-xs mb-0.5">Email</p><p className="text-text-primary font-semibold text-xs sm:text-sm">garvvariya03@gmail.com</p></div>
               </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center"><MapPin size={24} className="text-blue-500" /></div>
-                <div><p className="text-text-secondary text-sm mb-1">Location</p><p className="text-text-primary font-semibold">Surat, Gujarat, India</p></div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center"><MapPin size={20} className="text-blue-500" /></div>
+                <div><p className="text-text-secondary text-xs mb-0.5">Location</p><p className="text-text-primary font-semibold text-xs sm:text-sm">Surat, Gujarat, India</p></div>
               </div>
             </div>
-            <div className="px-6 py-4 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/30 mb-10 w-full max-w-md">
-              <p className="text-blue-600 dark:text-blue-300 font-semibold">Open to full-time & freelance opportunities</p>
+            <div className="px-4 py-2.5 rounded-lg bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/30 mb-6 w-full max-w-sm">
+              <p className="text-blue-600 dark:text-blue-300 font-semibold text-xs sm:text-sm">Open to full-time & freelance opportunities</p>
             </div>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-3">
               {socials.map((s, i) => (
-                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.15, y: -3 }} whileTap={{ scale: 0.9 }} className="w-14 h-14 rounded-2xl bg-bg-secondary border border-card-border flex items-center justify-center text-text-secondary hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 cursor-pointer" aria-label={s.label}>
-                  <s.icon size={24} />
+                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} className="w-11 h-11 rounded-xl bg-bg-secondary border border-card-border/80 flex items-center justify-center text-text-secondary hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 cursor-pointer" aria-label={s.label}>
+                  <s.icon size={20} />
                 </motion.a>
               ))}
             </div>
