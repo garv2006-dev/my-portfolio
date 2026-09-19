@@ -7,6 +7,7 @@ import Certifications from './components/Certifications';
 import Journey from './components/Journey';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AiAssistant from './components/AiAssistant';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <Journey />
       <Contact />
       <Footer />
+      <AiAssistant />
     </div>
   );
 }
