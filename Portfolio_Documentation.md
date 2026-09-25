@@ -50,7 +50,36 @@ Driven by curiosity and a desire to solve real-world problems, I continuously fo
 
 ## 3. Featured Projects & Present AI Applications
 
-### Present Project: Luxury Hotels — AI-Powered Full-Stack Hotel Booking & RAG Platform
+### Present Project 1: Nexus AI — Full-Stack AI Chat & Collaborative Workspace Platform
+- **Category:** Full-Stack AI Chat & Collaborative Workspace Platform
+- **Period:** Jan 2026 – Present
+- **Live Demo / Repository:** [github.com/garv2006-dev](https://github.com/garv2006-dev)
+- **Description:** Designed and developed an end-to-end AI chat and team knowledge platform featuring Retrieval-Augmented Generation (RAG) with FlashRank re-ranking, multi-format document indexing (PDF, DOCX, TXT), collaborative team workspaces, Clerk authentication, Stripe subscription management, and real-time streaming AI interactions.
+- **Tech Stack:** React.js, FastAPI, Python, Google Gemini LLM, LangChain, FlashRank, RAG, Supabase / PostgreSQL, Clerk Auth, Stripe API, Tailwind CSS, REST APIs
+- **Key Accomplishments & Technical Highlights:**
+  - **Implemented Retrieval-Augmented Generation (RAG):** Context-aware AI responses using vector embeddings, document chunking, and FlashRank re-ranking for ultra-precise retrieval.
+  - **Integrated Google Gemini & OpenAI LLMs:** Streaming AI responses, customizable safety guardrails, and persistent multi-turn chat sessions.
+  - **Collaborative Team Workspaces & RBAC:** Built workspaces supporting role-based access control (Admin, Member, Viewer), team member management, and email invitation workflows.
+  - **High-Performance Document Engine:** Multi-format document parser (PDF, DOCX, TXT) with semantic text splitting and instant search indexing.
+  - **Billing & Credit System:** Integrated Stripe payment gateway supporting subscription tiers, webhook processing, and token usage tracking.
+  - **Enterprise Security & Auth:** Verified authentication using Clerk JWKS public key verification and backend authorization middleware.
+  - **Modern React UI/UX:** Built with React 18, Vite, Tailwind CSS v4, Framer Motion animations, markdown rendering, and syntax highlighting.
+
+### Present Project 2: Emotion AI — Real-Time NLP Emotion Classifier
+- **Category:** NLP & Machine Learning Application
+- **Period:** Jan 2026 – Present
+- **Live Demo / Repository:** [github.com/garv2006-dev](https://github.com/garv2006-dev)
+- **Description:** An interactive full-stack NLP application that analyzes user text and predicts its dominant emotional tone in real time. The system combines TF-IDF feature extraction with Logistic Regression and presents probability scores for six emotion classes through a responsive Flask interface.
+- **Tech Stack:** Python, Flask, scikit-learn, TF-IDF, Logistic Regression, REST API, HTML5, CSS3, JavaScript, Docker
+- **Key Accomplishments & Technical Highlights:**
+  - **Real-Time Text Classification:** Built a text classification workflow for anger, fear, joy, love, sadness, and surprise.
+  - **Multi-Endpoint REST API:** Implemented a REST API with prediction, health-check, and example-prompt endpoints.
+  - **Probability Distribution Display:** Added probability-based results so users can inspect the complete emotion distribution, not only the top prediction.
+  - **Glassmorphism Interface:** Designed a responsive glassmorphism interface with sample prompts, loading states, retry handling, and model status feedback.
+  - **Safe Model Loading & Fallback Training:** Added safe model loading with automatic TF-IDF and Logistic Regression fallback training when serialized artifacts are unavailable.
+  - **Docker Containerization:** Containerized the application for seamless deployment with Docker and Render.
+
+### Present Project 3: Luxury Hotels — AI-Powered Full-Stack Hotel Booking & RAG Platform
 - **Category:** AI/ML & Full-Stack Hotel Booking Application
 - **Period:** Nov 2025 – Feb 2026
 - **Live Demo:** [luxuryhotelrooms.site](https://www.luxuryhotelrooms.site/)

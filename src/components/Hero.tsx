@@ -128,38 +128,38 @@ export default function Hero() {
   );
 
   return (
-    <section id="home" ref={sectionRef} className="relative min-h-screen lg:h-screen lg:min-h-[680px] flex items-center justify-center overflow-hidden bg-mesh section-snap pt-16 pb-8 lg:pt-0 lg:pb-0">
+    <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh section-snap pt-20 pb-12 lg:pt-0 lg:pb-0">
       {floatingSymbols.map((sym, i) => (
-        <motion.div key={i} className={`absolute ${sym.size} font-mono text-blue-400/20 select-none pointer-events-none`} style={{ left: sym.x, top: sym.y }} animate={{ opacity: [0.1, 0.3, 0.1], y: [0, -15, 0], rotate: [0, 8, -4, 0] }} transition={{ duration: 6, delay: sym.delay, repeat: Infinity, ease: 'easeInOut' }}>{sym.text}</motion.div>
+        <motion.div key={i} className={`absolute ${sym.size} font-mono text-blue-400/20 select-none pointer-events-none hidden sm:block`} style={{ left: sym.x, top: sym.y }} animate={{ opacity: [0.1, 0.3, 0.1], y: [0, -15, 0], rotate: [0, 8, -4, 0] }} transition={{ duration: 6, delay: sym.delay, repeat: Infinity, ease: 'easeInOut' }}>{sym.text}</motion.div>
       ))}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 left-1/4 w-72 sm:w-80 h-72 sm:h-80 bg-blue-400/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-72 h-64 sm:h-72 bg-purple-400/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }} />
 
       <motion.div style={{ opacity, scale, y }} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 lg:pt-0 lg:pb-0">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
           <div className="text-center lg:text-left lg:max-w-xl mx-auto lg:mx-0 flex flex-col justify-center">
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[11px] sm:text-xs font-semibold mb-3 mx-auto lg:mx-0 w-fit">
-              <Sparkles size={13} className="text-blue-500" /> AI/ML Engineer & Full-Stack Developer
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[11px] sm:text-xs font-semibold mb-3 mx-auto lg:mx-0 w-fit">
+              <Sparkles size={13} className="text-blue-500 shrink-0" /> <span>AI/ML Engineer & Full-Stack Developer</span>
             </motion.div>
 
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Space_Grotesk] text-gradient-blue leading-tight mb-3">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="text-3xl sm:text-5xl lg:text-6xl font-bold font-[Space_Grotesk] text-gradient-blue leading-tight mb-3">
               Garv Variya
             </motion.h1>
 
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-3 h-8">
-              <span className="text-blue-500">&gt;</span> {typedText}<span className="animate-typing-cursor text-blue-500 ml-0.5">|</span>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="text-base sm:text-xl lg:text-2xl font-medium text-gray-600 dark:text-gray-300 mb-4 min-h-[3rem] sm:min-h-[2.25rem] flex items-center justify-center lg:justify-start">
+              <span><span className="text-blue-500">&gt;</span> {typedText}<span className="animate-typing-cursor text-blue-500 ml-0.5">|</span></span>
             </motion.div>
 
             <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }} className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 mb-6">
               Building intelligent AI/ML models, RAG systems, and LLM applications — backed by 1+ year of professional Full-Stack web development experience in React, Next.js, and Node.js.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <motion.button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold text-xs sm:text-sm shadow-md shadow-blue-500/20 relative overflow-hidden group cursor-pointer">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.6 }} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start w-full max-w-md mx-auto lg:mx-0">
+              <motion.button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto px-5 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold text-xs sm:text-sm shadow-md shadow-blue-500/20 relative overflow-hidden group cursor-pointer text-center">
                 <span className="relative z-10">View AI & Web Projects</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </motion.button>
-              <motion.button onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 border border-blue-500/80 text-blue-500 rounded-lg font-semibold text-xs sm:text-sm hover:bg-blue-500/5 transition-colors relative overflow-hidden group cursor-pointer">
+              <motion.button onClick={() => document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto px-5 py-3 border border-blue-500/80 text-blue-500 rounded-xl font-semibold text-xs sm:text-sm hover:bg-blue-500/5 transition-colors relative overflow-hidden group cursor-pointer text-center">
                 <span className="relative z-10">View Certifications</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </motion.button>
