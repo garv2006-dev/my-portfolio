@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useScrollProgress, useActiveSection } from '../hooks';
 
 const navLinks = [
@@ -41,6 +41,19 @@ export default function Navbar() {
     }
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  // Lock background body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
@@ -95,14 +108,14 @@ export default function Navbar() {
           </motion.button>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1.5">
+          <div className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`group relative px-4.5 py-2 text-sm font-semibold rounded-full transition-colors duration-500 cursor-pointer ${isActive
+                  className={`group relative px-3 lg:px-4 py-1.5 text-xs lg:text-sm font-semibold rounded-full transition-colors duration-300 cursor-pointer ${isActive
                     ? 'text-cyan-accent'
                     : 'text-gray-400 hover:text-white'
                     }`}
@@ -111,7 +124,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 rounded-full -z-10 border bg-white/10 border-white/10 shadow-md shadow-black/10 transition-all duration-500"
+                      className="absolute inset-0 rounded-full -z-10 border bg-white/10 border-white/10 shadow-md shadow-black/10 transition-all duration-300"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -131,129 +144,116 @@ export default function Navbar() {
               onClick={toggleTheme}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="ml-4 p-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 text-white cursor-pointer transition-colors duration-300 flex items-center justify-center"
+              className="ml-2 lg:ml-3 p-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 text-white cursor-pointer transition-colors duration-300 flex items-center justify-center shrink-0"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? (
-                <Sun size={16} className="text-amber-400 stroke-[2.5]" />
+                <Sun size={15} className="text-amber-400 stroke-[2.5]" />
               ) : (
-                <Moon size={16} className="text-blue-300 stroke-[2.5]" />
+                <Moon size={15} className="text-blue-300 stroke-[2.5]" />
               )}
             </motion.button>
-
-
           </div>
 
-          {/* Mobile Animated Hamburger Menu Button */}
+          {/* Mobile Animated Hamburger / Close Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle mobile menu"
-            className="md:hidden p-2 rounded-full transition-colors duration-500 cursor-pointer text-white hover:bg-white/10"
+            className="md:hidden p-2 rounded-full transition-colors duration-300 cursor-pointer text-white hover:bg-white/10 focus:outline-none flex items-center justify-center w-9 h-9"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <motion.line
-                x1="4"
-                y1="6"
-                x2="20"
-                y2="6"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                animate={{
-                  rotate: mobileOpen ? 45 : 0,
-                  y: mobileOpen ? 6.25 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                style={{ originX: '12px', originY: '6px' }}
-              />
-              <motion.line
-                x1="4"
-                y1="12"
-                x2="20"
-                y2="12"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                animate={{
-                  opacity: mobileOpen ? 0 : 1,
-                  scaleX: mobileOpen ? 0 : 1,
-                }}
-                transition={{ duration: 0.2 }}
-              />
-              <motion.line
-                x1="4"
-                y1="18"
-                x2="20"
-                y2="18"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                animate={{
-                  rotate: mobileOpen ? -45 : 0,
-                  y: mobileOpen ? -6.25 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                style={{ originX: '12px', originY: '18px' }}
-              />
-            </svg>
+            <AnimatePresence mode="wait" initial={false}>
+              {mobileOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ scale: 0.6, rotate: -90, opacity: 0 }}
+                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                  exit={{ scale: 0.6, rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  <X size={20} className="text-white" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ scale: 0.6, rotate: 90, opacity: 0 }}
+                  animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                  exit={{ scale: 0.6, rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-center"
+                >
+                  <Menu size={20} className="text-white" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </motion.nav>
       </div>
 
-      {/* Floating Mobile Dropdown Menu Card */}
+      {/* Mobile Backdrop Overlay & Dropdown Menu Card */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -15, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed left-4 right-4 z-40 md:hidden p-4 rounded-xl border backdrop-blur-xl shadow-2xl transition-all duration-500 pointer-events-auto top-20 bg-slate-950/90 border-white/10 shadow-black/40"
-          >
-            <div className="space-y-1.5">
-              {navLinks.map((link, i) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <motion.button
-                    key={link.id}
-                    onClick={() => scrollTo(link.id)}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer ${isActive
-                      ? 'text-cyan-accent bg-white/10 border border-white/10'
-                      : 'text-gray-300 hover:text-white hover:bg-white/5'
-                      }`}
-                  >
-                    {link.label}
-                  </motion.button>
-                );
-              })}
+          <>
+            {/* Backdrop to dismiss on tap outside */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-30 bg-slate-950/60 backdrop-blur-sm md:hidden"
+            />
 
-              {/* Mobile Theme Toggle */}
-              <motion.button
-                onClick={toggleTheme}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="w-full flex items-center justify-center gap-2 mt-3 px-5 py-3 text-sm font-semibold rounded-xl border border-white/10 bg-white/10 text-white shadow-lg hover:bg-white/15 cursor-pointer"
-              >
-                {theme === 'dark' ? (
-                  <>
-                    <Sun size={16} className="text-amber-400" />
-                    <span>Light Mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon size={16} className="text-blue-300" />
-                    <span>Dark Mode</span>
-                  </>
-                )}
-              </motion.button>
+            <motion.div
+              initial={{ opacity: 0, y: -15, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed left-4 right-4 z-40 md:hidden p-3 rounded-2xl border backdrop-blur-xl shadow-2xl transition-all duration-300 pointer-events-auto top-20 bg-slate-950/95 border-white/10 shadow-black/60 max-h-[calc(100vh-5.5rem)] overflow-y-auto scrollbar-none"
+            >
+              <div className="space-y-1">
+                {navLinks.map((link, i) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <motion.button
+                      key={link.id}
+                      onClick={() => scrollTo(link.id)}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04 }}
+                      className={`block w-full text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${isActive
+                        ? 'text-cyan-accent bg-white/10 border border-white/10'
+                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                        }`}
+                    >
+                      {link.label}
+                    </motion.button>
+                  );
+                })}
 
-
-            </div>
-          </motion.div>
+                {/* Mobile Theme Toggle */}
+                <motion.button
+                  onClick={toggleTheme}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navLinks.length * 0.04 }}
+                  className="w-full flex items-center justify-center gap-2 mt-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl border border-white/10 bg-white/10 text-white shadow-lg hover:bg-white/15 cursor-pointer active:scale-[0.98] transition-all"
+                >
+                  {theme === 'dark' ? (
+                    <>
+                      <Sun size={16} className="text-amber-400" />
+                      <span>Switch to Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon size={16} className="text-blue-300" />
+                      <span>Switch to Dark Mode</span>
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

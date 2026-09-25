@@ -34,22 +34,19 @@ export default function Contact() {
         <div className="max-w-xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="bg-card-bg border border-card-border/80 shadow-sm rounded-xl p-5 sm:p-6 lg:p-8 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center">
             <h3 className="text-xl sm:text-2xl font-bold text-text-primary font-[Space_Grotesk] mb-6">Let's Build Something Together</h3>
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mb-6">
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mb-6 w-full justify-center">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center"><Mail size={20} className="text-blue-500" /></div>
-                <div><p className="text-text-secondary text-xs mb-0.5">Email</p><p className="text-text-primary font-semibold text-xs sm:text-sm">garvvariya03@gmail.com</p></div>
+                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><Mail size={20} className="text-blue-500" /></div>
+                <div><p className="text-text-secondary text-xs mb-0.5">Email</p><p className="text-text-primary font-semibold text-xs sm:text-sm break-all">garvvariya03@gmail.com</p></div>
               </div>
               <div className="flex flex-col items-center gap-2">
-                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center"><MapPin size={20} className="text-blue-500" /></div>
+                <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><MapPin size={20} className="text-blue-500" /></div>
                 <div><p className="text-text-secondary text-xs mb-0.5">Location</p><p className="text-text-primary font-semibold text-xs sm:text-sm">Surat, Gujarat, India</p></div>
               </div>
             </div>
-            <div className="px-4 py-2.5 rounded-lg bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/30 mb-6 w-full max-w-sm">
-              <p className="text-blue-600 dark:text-blue-300 font-semibold text-xs sm:text-sm">Open to full-time & freelance opportunities</p>
-            </div>
             <div className="flex justify-center gap-3">
               {socials.map((s, i) => (
-                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} className="w-11 h-11 rounded-xl bg-bg-secondary border border-card-border/80 flex items-center justify-center text-text-secondary hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 cursor-pointer" aria-label={s.label}>
+                <motion.a key={i} href={s.href} target="_blank" rel="noreferrer" whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-bg-secondary border border-card-border/80 flex items-center justify-center text-text-secondary hover:text-blue-500 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-300 cursor-pointer" aria-label={s.label}>
                   <s.icon size={20} />
                 </motion.a>
               ))}

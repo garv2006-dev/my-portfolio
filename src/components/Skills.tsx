@@ -28,6 +28,11 @@ import {
   SiPytorch,
   SiNextdotjs,
   SiRailway,
+  SiFastapi,
+  SiFlask,
+  SiDocker,
+  SiSupabase,
+  SiStripe,
 } from 'react-icons/si';
 
 const skillCategories = {
@@ -41,6 +46,7 @@ const skillCategories = {
       'LLM Application Development',
       'Prompt Engineering',
       'RAG (Retrieval-Augmented Generation)',
+      'FlashRank Re-ranking',
       'LangChain',
       'MongoDB Vector Search',
       'Tool Calling',
@@ -52,15 +58,15 @@ const skillCategories = {
   },
   'Backend': {
     color: 'from-green-400 to-green-600',
-    skills: ['Node.js', 'Express.js', 'REST API'],
+    skills: ['Node.js', 'Express.js', 'FastAPI', 'Flask', 'REST API'],
   },
   'Databases': {
     color: 'from-cyan-400 to-teal-600',
-    skills: ['MongoDB', 'Firebase (Realtime DB + Firestore)', 'PostgreSQL'],
+    skills: ['MongoDB', 'Supabase / PostgreSQL', 'Firebase (Realtime DB + Firestore)'],
   },
   'Tools & Deployment': {
     color: 'from-orange-400 to-red-600',
-    skills: ['Git & GitHub', 'Clerk Authentication', 'Vercel', 'Netlify', 'Railway', 'Render', 'Postman', 'VS Code'],
+    skills: ['Docker', 'Git & GitHub', 'Clerk Authentication', 'Stripe', 'Vercel', 'Netlify', 'Railway', 'Render', 'Postman', 'VS Code'],
   },
 };
 
@@ -79,6 +85,7 @@ const skillIconMap: Record<string, { icon: IconComponent; color: string }> = {
   'LLM Application Development': { icon: Bot, color: '#8B5CF6' },
   'Prompt Engineering': { icon: Sparkles, color: '#EC4899' },
   'RAG (Retrieval-Augmented Generation)': { icon: Brain, color: '#3B82F6' },
+  'FlashRank Re-ranking': { icon: Cpu, color: '#A855F7' },
   'LangChain': { icon: Cpu, color: '#10B981' },
   'MongoDB Vector Search': { icon: Database, color: '#13AA52' },
   'Tool Calling': { icon: Wrench, color: '#F59E0B' },
@@ -95,16 +102,20 @@ const skillIconMap: Record<string, { icon: IconComponent; color: string }> = {
   // Backend
   'Node.js': { icon: SiNodedotjs, color: '#339933' },
   'Express.js': { icon: SiExpress, color: '#000000' },
+  'FastAPI': { icon: SiFastapi, color: '#009688' },
+  'Flask': { icon: SiFlask, color: '#000000' },
   'REST API': { icon: Code2, color: '#7C3AED' },
 
   // Databases
   'MongoDB': { icon: SiMongodb, color: '#47A248' },
+  'Supabase / PostgreSQL': { icon: SiSupabase, color: '#3ECF8E' },
   'Firebase (Realtime DB + Firestore)': { icon: SiFirebase, color: '#FFCA28' },
-  'PostgreSQL': { icon: SiPostgresql, color: '#336791' },
 
   // Tools & Deployment
+  'Docker': { icon: SiDocker, color: '#2496ED' },
   'Git & GitHub': { icon: SiGithub, color: '#181717' },
   'Clerk Authentication': { icon: ShieldCheck, color: '#6C47FF' },
+  'Stripe API': { icon: SiStripe, color: '#635BFF' },
   'Vercel': { icon: SiVercel, color: '#000000' },
   'Netlify': { icon: SiNetlify, color: '#00C7B7' },
   'Railway': { icon: SiRailway, color: '#0B0D0E' },
@@ -128,16 +139,15 @@ export default function Skills() {
         </motion.div>
 
         <div>
-          <div className="flex flex-wrap gap-2 justify-center mb-6 sm:mb-8">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center mb-6 sm:mb-8">
             {Object.keys(skillCategories).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === tab
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTab === tab
                     ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md shadow-blue-500/20 scale-105'
                     : 'bg-bg-secondary text-text-secondary border border-card-border/60 hover:bg-card-border hover:text-text-primary'
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -151,7 +161,7 @@ export default function Skills() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 justify-items-center"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4 justify-items-center"
             >
               {cat.skills.map((skill, i) => {
                 const entry = skillIconMap[skill];
@@ -164,13 +174,13 @@ export default function Skills() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.04 }}
                     whileHover={{ y: -4 }}
-                    className="w-full flex flex-col items-center justify-center text-center group cursor-default p-3 sm:p-4 rounded-xl bg-card-bg border border-card-border/80 shadow-sm hover:shadow-md hover:border-blue-500/30 transition-all duration-300"
+                    className="w-full min-h-[95px] sm:min-h-[110px] flex flex-col items-center justify-center text-center group cursor-default p-2.5 sm:p-4 rounded-xl bg-card-bg border border-card-border/80 shadow-sm hover:shadow-md hover:border-blue-500/30 transition-all duration-300"
                   >
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-blue-500/5 border border-card-border/60 flex items-center justify-center p-2 group-hover:scale-105 group-hover:bg-blue-500/10 transition-all duration-300 mb-2 sm:mb-2.5">
-                      <Icon color={iconColor} size={24} className="sm:hidden" />
+                    <div className="w-9 sm:w-12 h-9 sm:h-12 rounded-lg bg-blue-500/5 border border-card-border/60 flex items-center justify-center p-1.5 sm:p-2 group-hover:scale-105 group-hover:bg-blue-500/10 transition-all duration-300 mb-1.5 sm:mb-2.5 shrink-0">
+                      <Icon color={iconColor} size={22} className="sm:hidden" />
                       <Icon color={iconColor} size={26} className="hidden sm:block" />
                     </div>
-                    <span className="text-[11px] sm:text-xs font-semibold text-text-primary group-hover:text-blue-500 dark:group-hover:text-cyan-accent transition-colors duration-300 leading-tight">
+                    <span className="text-[10px] sm:text-xs font-semibold text-text-primary group-hover:text-blue-500 dark:group-hover:text-cyan-accent transition-colors duration-300 leading-tight break-words max-w-full px-1">
                       {skill}
                     </span>
                   </motion.div>

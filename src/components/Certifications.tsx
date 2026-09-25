@@ -78,11 +78,11 @@ export default function Certifications() {
 
               <div>
                 {/* Header Badge */}
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-105 transition-transform duration-300">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-500 group-hover:scale-105 transition-transform duration-300 shrink-0">
                     <ShieldCheck size={20} className="text-blue-500" />
                   </div>
-                  <span className={`px-3 py-0.5 rounded-full text-[11px] font-bold text-white bg-gradient-to-r ${cert.gradient} shadow-sm`}>
+                  <span className={`px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold text-white bg-gradient-to-r ${cert.gradient} shadow-sm`}>
                     {cert.badge}
                   </span>
                 </div>
@@ -95,11 +95,11 @@ export default function Certifications() {
                 <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-text-secondary mb-3">
                   <span className="flex items-center gap-1 font-medium text-text-primary">
                     <Building2 size={13} className="text-blue-500 flex-shrink-0" />
-                    {cert.issuer} {cert.platform ? `(${cert.platform})` : ''}
+                    <span>{cert.issuer} {cert.platform ? `(${cert.platform})` : ''}</span>
                   </span>
                   <span className="flex items-center gap-1">
                     <Calendar size={13} className="text-blue-500 flex-shrink-0" />
-                    {cert.date}
+                    <span>{cert.date}</span>
                   </span>
                 </div>
 
@@ -112,23 +112,23 @@ export default function Certifications() {
                   {cert.skills.map((s) => (
                     <span
                       key={s}
-                      className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300 border border-blue-100/50 dark:border-blue-900/30 flex items-center gap-1"
+                      className="px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-medium bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300 border border-blue-100/50 dark:border-blue-900/30 flex items-center gap-1"
                     >
                       <CheckCircle2 size={11} className="text-blue-500 flex-shrink-0" />
-                      {s}
+                      <span>{s}</span>
                     </span>
                   ))}
                 </div>
               </div>
 
               {/* Card Footer / Status */}
-              <div className="pt-3 border-t border-card-border/60 flex items-center justify-between text-[11px] text-text-secondary">
+              <div className="pt-3 border-t border-card-border/60 flex flex-wrap items-center justify-between gap-2 text-[11px] text-text-secondary">
                 <span className="font-semibold text-emerald-500 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                   Verified Credential
                 </span>
                 {cert.validity && (
-                  <span className="text-text-secondary font-medium">{cert.validity}</span>
+                  <span className="text-text-secondary font-medium text-[10px] sm:text-[11px]">{cert.validity}</span>
                 )}
               </div>
             </motion.div>

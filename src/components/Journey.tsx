@@ -53,20 +53,20 @@ export default function Journey() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-amber-500 md:-translate-x-px" />
+          <div className="absolute left-3.5 sm:left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-amber-500 md:-translate-x-px" />
 
           {timeline.map((item, i) => (
-            <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className={`relative flex items-start mb-8 sm:mb-10 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className={`relative flex items-start mb-6 sm:mb-10 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
               <div className="hidden md:block md:w-1/2" />
-              <div className="absolute left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 border-4 border-timeline-dot-border -translate-x-1/2 mt-5 z-10 shadow-md shadow-blue-500/40 transition-all duration-300" />
-              <div className={`ml-10 md:ml-0 md:w-1/2 ${i % 2 === 0 ? 'md:pl-8' : 'md:pr-8 md:text-right'}`}>
-                <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-card-bg border border-card-border/80 shadow-sm rounded-xl p-4 sm:p-5 hover:shadow-md hover:border-blue-500/30 transition-all duration-300">
+              <div className="absolute left-3.5 sm:left-4 md:left-1/2 w-3.5 h-3.5 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 border-4 border-timeline-dot-border -translate-x-1/2 mt-5 z-10 shadow-md shadow-blue-500/40 transition-all duration-300" />
+              <div className={`ml-8 sm:ml-10 md:ml-0 md:w-1/2 ${i % 2 === 0 ? 'md:pl-8' : 'md:pr-8 md:text-right'}`}>
+                <motion.div whileHover={{ scale: 1.01, y: -2 }} className="bg-card-bg border border-card-border/80 shadow-sm rounded-xl p-3.5 sm:p-5 hover:shadow-md hover:border-blue-500/30 transition-all duration-300">
                   <div className={`flex items-center gap-1.5 flex-wrap mb-1.5 ${i % 2 === 0 ? '' : 'md:justify-end'}`}>
-                    <span className={`inline-block px-2.5 py-0.5 rounded-full bg-gradient-to-r ${item.color} text-white text-[11px] font-bold`}>{item.year}</span>
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300 border border-blue-100/50 dark:border-blue-900/30">{item.type}</span>
+                    <span className={`inline-block px-2.5 py-0.5 rounded-full bg-gradient-to-r ${item.color} text-white text-[10px] sm:text-[11px] font-bold`}>{item.year}</span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-300 border border-blue-100/50 dark:border-blue-900/30">{item.type}</span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-text-primary font-[Space_Grotesk] mb-1">{item.title}</h3>
-                  {item.location && <p className="text-xs font-medium text-blue-500 mb-1.5">{item.location}</p>}
+                  <h3 className="text-sm sm:text-lg font-bold text-text-primary font-[Space_Grotesk] mb-1 leading-snug">{item.title}</h3>
+                  {item.location && <p className="text-[11px] sm:text-xs font-medium text-blue-500 mb-1.5">{item.location}</p>}
                   <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               </div>

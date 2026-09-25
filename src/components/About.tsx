@@ -4,13 +4,13 @@ import { useInView, useCountUp } from '../hooks';
 
 export default function About() {
   const { ref, isInView } = useInView(0.2);
-  const c1 = useCountUp(1, 1000, 0, isInView);
+  const c1 = useCountUp(3, 1000, 0, isInView);
   const c2 = useCountUp(2, 2000, 0, isInView);
   const c3 = useCountUp(1, 2000, 0, isInView);
   const c4 = useCountUp(100, 2000, 0, isInView);
 
   const stats = [
-    { value: `${c1}`, label: 'Project Built', icon: Code2 },
+    { value: `${c1}`, label: 'Projects Built', icon: Code2 },
     { value: `${c2}`, label: 'Certifications', icon: ShieldCheck },
     { value: `${c3}+ Year`, label: 'Full-Stack Exp.', icon: Globe },
     { value: `${c4}%`, label: 'AI/ML Focus', icon: Brain },
@@ -35,13 +35,13 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="flex flex-col items-center lg:items-start">
-            <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 flex items-center justify-center text-white text-4xl sm:text-5xl font-bold font-[Space_Grotesk] shadow-xl shadow-blue-500/20 mb-6 animate-pulse-glow">GV</div>
-            <div className="grid grid-cols-2 gap-3 w-full max-w-md">
+            <div className="w-28 h-28 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-blue-400 via-blue-500 to-indigo-600 flex items-center justify-center text-white text-3xl sm:text-5xl font-bold font-[Space_Grotesk] shadow-xl shadow-blue-500/20 mb-6 animate-pulse-glow">GV</div>
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 w-full max-w-md">
               {stats.map((s, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card-bg border border-card-border/80 shadow-sm rounded-xl p-3 sm:p-4 text-center hover:shadow-md transition-all">
                   <s.icon size={18} className="text-blue-500 mx-auto mb-1.5" />
-                  <div className="text-xl sm:text-2xl font-bold text-text-primary font-[Space_Grotesk]">{s.value}</div>
-                  <div className="text-[11px] sm:text-xs text-text-secondary mt-0.5">{s.label}</div>
+                  <div className="text-lg sm:text-2xl font-bold text-text-primary font-[Space_Grotesk] truncate">{s.value}</div>
+                  <div className="text-[10px] sm:text-xs text-text-secondary mt-0.5 truncate">{s.label}</div>
                 </motion.div>
               ))}
             </div>
